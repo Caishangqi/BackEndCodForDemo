@@ -63,7 +63,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.3.7.RELEASE</version>
                 <configuration>
-                    <mainClass>com.jt.Springdemo1Application</mainClass>
+                    <mainClass>com.jt.SpringDemo1Application</mainClass>
                 </configuration>
                 <executions>
                     <execution>
