@@ -3,5 +3,11 @@
 
 
 
-### What it is?
-The demo Code use for Java SpringMVC with Vue and other CodeFrame.The whole Demo is show the Jd shop for learning.
+### What does the project do?
+* The demo Code use for Java SpringMVC with Vue and other CodeFrame.The whole Demo is show the Jd shop for learning.
+* Spring MVC is used for exchange data between Front and Back Code.
+* Mybatis/MybatisPlus framework is a sustainable framework that simplify JDBC,which enhance codding efficiency.
+* SpringBoot (Framework or Tool) use a more simple way to Encapsulate the **previous framework**, which put programming into a nutshell.
+
+### The Glance of the Project
+
