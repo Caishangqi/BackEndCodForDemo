@@ -1,4 +1,6 @@
 # Default ignored files
+desktop.ini
+.idea
 /shelf/
 /.idea/
 /.idea/workspace.xml
