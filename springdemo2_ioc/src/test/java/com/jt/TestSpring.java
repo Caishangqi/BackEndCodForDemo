@@ -13,7 +13,7 @@ public class TestSpring {
         ClassPathXmlApplicationContext Context = new ClassPathXmlApplicationContext(resource);
 
         //解释: Spring容器的数据结构是Map集合,Map<key,value>, key是bean中id值, value是通过反射机制实例化的对象.
-        //数据结构: Map<key,value> Map<user,User对象>
+        //数据结构: Map<key,value>     Map<user,User对象>
         //从容器中获取对象
         User user = (User) Context.getBean("user");//通过Id名称获取对象
         User user2 = Context.getBean(User.class);//第二种方法获取对象
@@ -24,6 +24,7 @@ public class TestSpring {
     }
 
     @Test
+    //底层其实通过反射创建了User实例
     public void testDemo2() throws Exception {
         User user = (User) Class.forName("com.jt.User").newInstance();
         user.say();
