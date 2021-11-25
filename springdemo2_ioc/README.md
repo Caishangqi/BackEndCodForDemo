@@ -1,5 +1,6 @@
 # Spring-IOC(Inversion of Control)
 Ioc全称Inversion of Control，即“控制反转”，这是一种设计思想。对象创建的权利由Spring框架完成.由容器管理对象的生命周期.
+![image](https://user-images.githubusercontent.com/39553613/143372624-7806f03d-809f-4eb9-936e-a1b14693a81c.png)
 
 
 # 延伸阅读
