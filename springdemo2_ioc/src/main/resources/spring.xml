@@ -2,10 +2,12 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
     <!--该配置文件作用是管理对象-->
-    <!--术语：bean 被spring容器管理的对象称之为bean-->
+    <!--术语：bean 意思是被spring容器管理的对象称之为bean-->
 
     <!--id: 是spring容器中对象的唯一标识符，不能重复-->
     <!--class: 对象的全路径-->
+
     <bean id="user" class="com.jt.User"></bean>
 </beans>
