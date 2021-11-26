@@ -9,5 +9,6 @@ desktop.ini
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
-.mvn/wrapper/
+/.mvn/wrapper/
+.mvn/*
 /target/
