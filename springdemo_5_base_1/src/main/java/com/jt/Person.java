@@ -10,6 +10,7 @@ import javax.annotation.PreDestroy;
 @Component //将对象交给Spring容器管理 key=person value=反射对象
 public class Person {
 
+
     public Person() {
         System.out.println("Init 0 default...");
     }
