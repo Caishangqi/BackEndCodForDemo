@@ -1,4 +1,4 @@
-package com.jt;
+package com.jt.service;
 
 import com.jt.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
