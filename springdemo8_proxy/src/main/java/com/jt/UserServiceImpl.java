@@ -1,6 +1,8 @@
-package com.jt.service;
+package com.jt;
+//被代理
 
 import org.springframework.stereotype.Service;
+
 /*代理模式
  * (+) 一般采用代理模式就是为了解耦，将公共的通用的方法
  * 功能放入代理对象种。由业务层专注于我们的业务执行即可。
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
 
-    @Override
+    @Override //必须得有这个Override不然接口没实现
     public void addUser() {
         /*业务层只专注于业务*/
         System.out.println("[+] Added User");
