@@ -41,4 +41,27 @@ public class JDKProxy {
         };
     }
 
+    public static Object getTimeProxy(Object target) {
+        ClassLoader classLoader = target.getClass().getClassLoader();
+        Class<?>[] interfaces = target.getClass().getInterfaces();
+        return Proxy.newProxyInstance(classLoader, interfaces, invocationHandlerTime(target));
+    }
+
+    public static InvocationHandler invocationHandlerTime(Object target) {
+        return new InvocationHandler() {
+            @Override
+            public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                //开始时间
+                long lStart = System.currentTimeMillis();
+                Object result = method.invoke(target, args);
+                //结束时间
+                long lEnd = System.currentTimeMillis();
+                //消耗时间
+                long count = lEnd - lStart;
+                System.out.println("(-) Time Spend: " + count);
+                return result;
+            }
+        };
+    }
+
 }
