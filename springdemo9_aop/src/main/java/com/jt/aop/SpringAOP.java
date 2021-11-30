@@ -157,5 +157,12 @@ public class SpringAOP {
         System.out.println("[!] 这是一个后置通知 " + result);
     }
 
+    /*如果用户执行业务方法时*/
+    //异常通知：目标方法执行报错时，执行该通知
+    @AfterThrowing(value = "pointCut2()", throwing = "exception") //这里面加参数也和后置通知一样，往方法体中传参
+    public void afterThrowing2(Exception exception) {
+        System.out.println("[x] This ia an AfterThrowing");
+        System.out.println("[x] 获取异常的通知 " + exception.getMessage());
+    }
 
 }

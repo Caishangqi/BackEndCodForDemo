@@ -17,8 +17,10 @@ public class UserServiceImpl2 implements UserService {
         /*业务层只专注于业务*/
         System.out.println("[+] Added User");
         String out = "这是方法输出";
+
+        int a = 1 / 0;
         return out;
-//        int a = 1/0;
+
     }
     /*业务层操作时要考虑数据库*/
 
