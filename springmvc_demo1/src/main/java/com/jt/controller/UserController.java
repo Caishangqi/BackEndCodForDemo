@@ -71,10 +71,13 @@ public class UserController {
      * */
     @RequestMapping("/hobby")
     public String hobby(String[] hobby) {
-//        //截取
-//        String[] hobbyStrings = hobby.split(",");
-//        System.out.println(hobbyStrings[0]);
+
+        //截取
+        //String[] hobbyStrings = hobby.split(",");
+        //System.out.println(hobbyStrings[0]);
         //数组转换成字符串
+
+        /*上面这个方法已被SpringMVC实现↑*/
 
         return Arrays.toString(hobby);
     }
