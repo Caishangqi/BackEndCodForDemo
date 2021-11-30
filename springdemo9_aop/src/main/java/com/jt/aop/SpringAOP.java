@@ -3,12 +3,14 @@ package com.jt.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
 @Component //讲该类交给Spring容器管理
 @Aspect//标识该类是一个切面
+@Order(2) //按照顺序第二个执行
 public class SpringAOP {
 
 

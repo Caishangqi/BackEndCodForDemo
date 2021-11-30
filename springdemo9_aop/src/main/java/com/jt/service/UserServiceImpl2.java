@@ -1,6 +1,7 @@
 package com.jt.service;
 //被代理
 
+import com.jt.annotation.aba;
 import org.springframework.stereotype.Service;
 
 /*代理模式
@@ -12,13 +13,14 @@ public class UserServiceImpl2 implements UserService {
 
 
     @Override //必须得有这个Override不然接口没实现
-//    @aba //注解主要起标记作用
+    //    @aba //注解主要起标记作用
+    @aba
     public String addUser() {
         /*业务层只专注于业务*/
         System.out.println("[+] Added User");
         String out = "这是方法输出";
 
-        int a = 1 / 0;
+//        int a = 1 / 0;
         return out;
 
     }
