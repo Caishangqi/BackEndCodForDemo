@@ -19,4 +19,15 @@ public class TestSpring {
         userService.addUser();
         System.out.println(userService.getClass());
     }
+
+    @Test
+    public void TestDemo2() {
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+        /*本来应该是目标对象，不过与切入点表达式的BeanId匹配，则
+         * 动态生成代理对象，所以可以进行方法拓展的操作*/
+        UserService userService = (UserService) context.getBean("userServiceImpl2");
+        //由于是代理对象，所以方法可以拓展
+        String s = userService.addUser();
+        System.out.println("测试类获取返回值" + s);
+    }
 }

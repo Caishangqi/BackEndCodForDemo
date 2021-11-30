@@ -1,4 +1,4 @@
-package com.jt;
+package com.jt.service;
 
 public interface UserService {
     void addUser();

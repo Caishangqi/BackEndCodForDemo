@@ -1,4 +1,4 @@
-package com.jt;
+package com.jt.service;
 //被代理
 
 import org.springframework.stereotype.Service;

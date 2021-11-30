@@ -1,7 +1,6 @@
 package com.jt.service;
 //被代理
 
-import com.jt.annotation.aba;
 import org.springframework.stereotype.Service;
 
 /*代理模式
@@ -9,16 +8,17 @@ import org.springframework.stereotype.Service;
  * 功能放入代理对象种。由业务层专注于我们的业务执行即可。
  * */
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl2 implements UserService {
 
 
     @Override //必须得有这个Override不然接口没实现
-    @aba //注解主要起标记作用
+//    @aba //注解主要起标记作用
     public String addUser() {
         /*业务层只专注于业务*/
         System.out.println("[+] Added User");
+        String out = "这是方法输出";
+        return out;
 //        int a = 1/0;
-        return null;
     }
     /*业务层操作时要考虑数据库*/
 

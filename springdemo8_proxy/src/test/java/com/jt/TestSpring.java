@@ -3,6 +3,7 @@ package com.jt;
 import com.jt.config.SpringConfig;
 import com.jt.proxy.CGlibProxy;
 import com.jt.proxy.JDKProxy;
+import com.jt.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
