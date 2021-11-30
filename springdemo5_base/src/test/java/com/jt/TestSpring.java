@@ -1,6 +1,6 @@
 package com.jt;
 
-import config.SpringConfig;
+import com.jt.config.SpringConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

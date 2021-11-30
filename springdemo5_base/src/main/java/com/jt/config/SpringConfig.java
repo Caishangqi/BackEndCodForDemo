@@ -1,4 +1,4 @@
-package config;
+package com.jt.config;
 
 import com.jt.User;
 import org.springframework.context.annotation.*;
