@@ -2,6 +2,7 @@ package com.jt.controller;
 
 import com.jt.pojo.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -16,6 +17,7 @@ import java.util.Arrays;
 
 @Controller //将类交给SpringMVC管理，SpringMVC交给spring容器管理
 @ResponseBody //将数据转化为 "特殊字符串" 返回
+@CrossOrigin
 public class UserController {
 
     /*URL地址 http://localhost:8080/hello get类型的请求
@@ -24,8 +26,8 @@ public class UserController {
 
     @RequestMapping("/hello")
     public String hello() {
-        String mes = "您好，SpringMVC小甲虫の字符串";
-        return mes;
+        String result = "您好，SpringMVC小甲虫の字符串";
+        return result;
 
     }
 
@@ -194,6 +196,7 @@ public class UserController {
      * 1.@ResponseBody //将返回值转化为JSON串  使用最多!!!
      * 2.如果返回String类型,则@ResponseBody将字符串本身返回给前端.
      */
+
     @RequestMapping("/findJSON")
     @ResponseBody //将返回值转化为JSON串
     public User findJSON(User user) {
