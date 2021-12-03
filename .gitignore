@@ -10,5 +10,5 @@ desktop.ini
 # Editor-based HTTP Client requests
 /httpRequests/
 /.mvn/wrapper/
-.mvn/*
-/target/
+/.mvn/
+*.mvn/wrapper/maven-wrapper.jar
