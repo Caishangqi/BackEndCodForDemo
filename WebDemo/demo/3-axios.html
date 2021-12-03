@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Axios 测试 3</title>
+    <script src="../js/axios.js" type="text/javascript">
+
+    </script>
+</head>
+<body>
+<h1>Axios 简化测试</h1>
+<p>前端与后端服务器框架</p>
+<script type="text/javascript">
+    /**
+     * 简化方式 (1)
+     * 抽取后端服务器地址
+     */
+    /*抽取共有部分*/
+    axios.defaults.baseURL = "http://localhost:8080"
+
+    axios.get("/web/hello").then(function (promise) {
+        console.log(promise.data)
+    })
+
+    /**
+     * 简化方式 (2)
+     * 箭头函数,如果蚕食只有一个可以省略括号
+     */
+
+    axios.get("/web/hello").then(promise => {
+        promise.data
+    });
+
+    /**
+     * 简化方法 (3) async wait 简化调用 重点
+     * 如果ajax嵌套层级较多，可能会造成 “回调地狱” 问题 (就是回调太多)
+     * 将axios中的then进行简化。
+     *
+     * 语法：
+     *        (!) 使用async关键字标识函数
+     *        (!) 通过await标识ajax请求
+     *        (!) 必须同时出现
+     *        (!) https 协议默认端口 443 http 协议默认端口 80
+     */
+    async function getHello() { //定义函数
+        // let promise = await axios.get("/web/hello")
+        // alert(promise.data)
+        let {
+            data: result,
+            status: code
+        } = await axios.get("/web/hello")
+        alert(result + " " + code)
+
+    }
+
+    //调用函数
+    getHello()
+</script>
+</body>
+</html>
