@@ -11,5 +11,5 @@ desktop.ini
 /httpRequests/
 /.mvn/wrapper/
 /.mvn/
-*/.mvn/
+*/.mvn/**
 *.mvn/wrapper/maven-wrapper.jar
