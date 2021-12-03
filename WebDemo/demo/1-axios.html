@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Axios 测试-1</title>
+    <title>Axios 测试 1</title>
     <script src="../js/axios.js" type="text/javascript">
 
     </script>
@@ -20,6 +20,7 @@
         })
 
 
+
     /**
      * var 关键字 没有作用域的概念!!!!
      * let 相当于var 有作用域 更加安全.
@@ -30,10 +31,9 @@
      */
 
     let url1 = "http://localhost:8080/axios/getUserById?id=100"
-    axios.get(url1).then(function (promise) {
+    axios.get(url1).then(function (promise) { //服务器发送promise给代理代理再返回给用户
         console.log(promise.data)
     })
-
 
     /**
      * 1.get请求 对象传参
@@ -70,6 +70,7 @@
     axios.get(url3).then(function (promise) {
         console.log(promise.data)
     })
+
 
 </script>
 </body>

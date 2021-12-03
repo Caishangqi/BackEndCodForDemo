@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Axios 测试 2</title>
+    <script src="../js/axios.js" type="text/javascript">
+
+    </script>
+</head>
+<body>
+<h1>Axios 测试-2</h1>
+<p>前端与后端服务器框架</p>
+<script type="text/javascript">
+    /*
+     *   语法：
+     *   参数： axios.post(URL地址，数据对象) - 不需要像get那样写{params:对象}
+     *   (!) axios.get(url,{params:对象}) 请求写法不一样
+     *   (!) 在axios.post中，post会发送2次请求，第一次是试探确保链接畅通，然后请求
+     *       是json串的形式。
+     * */
+
+
+    let url1 = "http://localhost:8080/axios/saveUser"
+    let user1 = {
+        ids: 100,
+        name: "Caizii",
+        age: 2,
+        sex: "男"
+    }
+    axios.post(url1, user1).then(function (promise) {
+        console.log(promise.data)
+    })
+
+
+    /*
+     *	需求：用户的修改操作 - 将ID=100的数据 name改为 张三，age改为99，性别改为 未知
+     *	URL： http://localhost:8080/axios/updateUser
+     *   返回值：修改成功 数据要求后端打印
+     */
+    let url2 = "http://localhost:8080/axios/updateUser"
+    let data = {
+        id: 100,
+        name: "张三",
+        age: 99,
+        sex: "未知"
+    }
+    axios.put(url2, data).then(function (promise) {
+        console.log(promise.data)
+    })
+
+</script>
+</body>
+</html>
