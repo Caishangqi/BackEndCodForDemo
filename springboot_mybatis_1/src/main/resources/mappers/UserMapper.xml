@@ -9,13 +9,55 @@
         resultType 返回值结果类型 返回的POJO对象类型
     -->
     <select id="findAll" resultType="com.jt.pojo.User">
-        select * from demo_user
+        select *
+        from demo_user
     </select>
     <!--
         根据id查询数据库
         动态取值: #{key}
     -->
     <select id="findById" resultType="com.jt.pojo.User">
-        select * from demo_user where id = #{id}
+        select *
+        from demo_user
+        where id = #{id}
+    </select>
+
+    <!--根据name和age查询
+        (!) 别名包 在配置文件中，指定包路径：
+        可以自动实现包路径的拼接
+        (resultType规则) 首先会根据别名包匹配，如果匹配不
+        成功则按照原路径匹配
+        (参数传递规则) 如果是单个的参数，则使用#{key}取值。 获取的是参数的值
+        如果对象参数，则使用#{属性} 获取的是属性值
+    -->
+    <select id="findUserByNA" resultType="User">
+        select *
+        from demo_user
+        where name = #{name}
+          and age = #{age}
+    </select>
+    <!--
+        根据年龄范围查询数据：
+        语法: 如果传递的参数是Map 则使用#{key}
+        xml转义字符： &gt;  >
+                    &lt;  <
+                    &amp; &
+                    万能转义字符 <![CDATA[转义内容]]>
+    -->
+    <select id="findUserByAge" resultType="User">
+        select *
+        from demo_user
+        where age > #{minAge}
+          and age &lt; #{maxAge}
+
+    </select>
+
+    <select id="findUserByAge2" resultType="User">
+        <![CDATA[
+        select *
+        from demo_user
+        where age > #{minAge}
+          and age < #{maxAge}
+        ]]>
     </select>
 </mapper>

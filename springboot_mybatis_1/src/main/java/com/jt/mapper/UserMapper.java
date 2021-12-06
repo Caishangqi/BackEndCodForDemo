@@ -4,8 +4,11 @@ package com.jt.mapper;
 
 import com.jt.pojo.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
+
 @Mapper
 /*把这个对接口交给Spring容器管理 Map<userMapper,代理对象(JDK)>*/
 public interface UserMapper {
@@ -14,6 +17,17 @@ public interface UserMapper {
     List<User> findAll(); //查找表返回多个值
 
     User findById(int id); //根据ID查询数据库
+
+    List<User> findUserByNA(User user);
+
+    List<User> findUserByAge(Map<String, Integer> userList);
+
+    /*
+     * Mybatis只支持单值传参 将多值封装为单值
+     * 注解：@Param("key") 为key int minAge 为值
+     * 将数据封装为Map集合
+     * */
+    List<User> findUserByAge2(@Param("minAge") int minAge, @Param("maxAge") int maxAge);
 
     //    User findAll2(); //查找表返回一个值
     //

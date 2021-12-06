@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
 
 @SpringBootTest
 public class TestMybatis {
@@ -28,5 +29,48 @@ public class TestMybatis {
 
         User result = userMapper.findById(id);
         System.out.println(result);
+    }
+
+    /**
+     * (!) 如果是多个参数传递，则一般采用对象的方式封装
+     */
+
+    @Test
+    public void testFindByNA() {
+        String name = "孙尚香";
+        int age = 18;
+        User user = new User();
+        user.setAge(age).setName(name);
+        List<User> userList = userMapper.findUserByNA(user);
+        System.out.println(userList);
+    }
+
+    /**
+     * (!) 如果多个参数不方便使用User对象封装时，应该使用
+     * 万能的集合Map
+     */
+    @Test
+
+    public void testFindByAge() {
+        int minAge = 18;
+        int maxAge = 100;
+        Map<String, Integer> userList = new HashMap<>();
+        userList.put("minAge", minAge);
+        userList.put("maxAge", maxAge);
+        List<User> users = userMapper.findUserByAge(userList);
+        System.out.println(users);
+    }
+
+    /**
+     * (!) 利用注解实现数据的封装
+     */
+    @Test
+
+    public void testFindByAge2() {
+        int minAge = 18;
+        int maxAge = 100;
+
+        List<User> users = userMapper.findUserByAge2(minAge, maxAge);
+        System.out.println(users);
     }
 }
