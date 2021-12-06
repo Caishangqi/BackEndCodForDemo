@@ -73,4 +73,35 @@ public class TestMybatis {
         List<User> users = userMapper.findUserByAge2(minAge, maxAge);
         System.out.println(users);
     }
+
+    /**
+     * 查询name字段中包含"君"的用户
+     */
+    @Test
+    public void testFindUserByLike() {
+        String name = ("%" + "君" + "%");
+        List<User> users = userMapper.findUserByLike(name);
+        System.out.println(users);
+    }
+
+    /**
+     * 根据指定ID查找
+     */
+    @Test
+    public void testFindListByIn() {
+        int[] array = {1, 2, 3, 5, 7};
+        List<User> users = userMapper.FindListByIn(array);
+        System.out.println(users);
+    }
+
+    /**
+     * 用户新增
+     */
+    @Test
+    public void testInsertUser() {
+        User user = new User();
+        user.setName("张三").setAge(18).setSex("男");
+        userMapper.saveUser(user);
+        System.out.println("(+) Added User Completed");
+    }
 }

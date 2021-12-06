@@ -60,4 +60,49 @@
           and age < #{maxAge}
         ]]>
     </select>
+    <!--模糊查询 特别注意表名的大小写问题
+        windows系统中：不区分大小写
+        Linux系统中：区分大小写
+        所以需要和数据库表面名字要一模一样
+
+        %拼接 使用 "%"#{name}"%"拼接
+        -->
+    <select id="findUserByLike" resultType="User">
+        select
+        <include refid="tableColumn"/>
+        from demo_user where name like #{name}
+    </select>
+
+    <!--SQL标签：抽取公共的SQL语句-->
+    <sql id="tableColumn">
+        id,name,age,sex
+    </sql>
+
+    <!--
+    mybatis的遍历的写法
+        foreach:
+            (!) collection 需要遍历的集合
+                (+) 数组                  关键字 array/list
+                (+) list集合              关键字 list
+                (+) Map<key,array/list>  关键字 key
+        open/close 循环体的开始和结束 可以写道循环之外
+        item 当前遍历数据的变量
+        separator 分割符
+    -->
+    <select id="FindListByIn" resultType="User">
+        select * from demo_user where id in (
+
+        <foreach collection="array" item="id" separator=",">
+
+            #{id}
+
+        </foreach>
+
+        )
+    </select>
+
+    <select id="saveUser">
+        insert into demo_user (id, name, age, sex) value (null, #{name}, #{age}, #{sex})
+    </select>
+
 </mapper>

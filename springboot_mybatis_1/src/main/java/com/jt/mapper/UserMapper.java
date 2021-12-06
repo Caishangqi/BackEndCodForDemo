@@ -13,6 +13,8 @@ import java.util.Map;
 /*把这个对接口交给Spring容器管理 Map<userMapper,代理对象(JDK)>*/
 public interface UserMapper {
 
+    void saveUser(User user);
+
     //指定接口的方法 查询demo_user的全部数据
     List<User> findAll(); //查找表返回多个值
 
@@ -28,6 +30,10 @@ public interface UserMapper {
      * 将数据封装为Map集合
      * */
     List<User> findUserByAge2(@Param("minAge") int minAge, @Param("maxAge") int maxAge);
+
+    List<User> findUserByLike(String name);
+
+    List<User> FindListByIn(int[] array);
 
     //    User findAll2(); //查找表返回一个值
     //
