@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace是mybatis映射文件的唯一标识,与接口对应-->
+<mapper namespace="com.jt.mapper.UserMapper">
+    <!--id 与接口方法对应
+        resultType 返回值结果类型 返回的POJO对象类型
+    -->
+    <select id="findAll" resultType="com.jt.pojo.User">
+        select * from demo_user
+    </select>
+    <!--
+        根据id查询数据库
+        动态取值: #{key}
+    -->
+    <select id="findById" resultType="com.jt.pojo.User">
+        select * from demo_user where id = #{id}
+    </select>
+</mapper>

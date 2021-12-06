@@ -1,0 +1,25 @@
+#1.配置端口号  注意缩进!!!!!
+server:
+  port: 8080
+
+#2.配置数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jt?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+    username: root
+    password: root
+
+#3.配置Mybatis
+mybatis:
+  type-aliases-package: com.jt.pojo
+  #将所有的映射文件全部加载
+  mapper-locations: classpath:/mappers/*.xml
+  #开启驼峰映射
+  configuration:
+    map-underscore-to-camel-case: true
+
+#4.打印SQL语句 打印com.jt.mapper下的Sql日志
+logging:
+  level:
+    com.jt.mapper: debug
