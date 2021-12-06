@@ -15,7 +15,7 @@ import java.util.List;
 public class TestMybatis {
     /**
      * 规则说明:
-     * 1.创建SqlSessionFactory 工厂模式
+     * 1.创建SqlSessionFactory 工厂模式 作用是生产SqlSession
      * 2.获取SqlSession 理解:数据库链接+传输器对象
      * 3.获取Mapper接口对象
      * 4.完成业务调用
@@ -33,7 +33,10 @@ public class TestMybatis {
         /*获取SqlSession，通过SqlSession可以直接操作数据库*/
         /*从SqlSessionFactory中获取sqlSession*/
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        //获取接口对象
+        //获取接口对象 - 因为没有实现类，使用的是JDK代理(代理对象)
+        /*Spring 使用 JDK代理
+         * Spring boot 使用的是CGLib代理
+         * 特例是SpringBoot里面整合mybatis使用的是JDK代理*/
         UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
         //调用接口方法
         List<User> userList = userMapper.findAll();
