@@ -12,7 +12,7 @@ import java.util.Map;
 @Mapper
 /*把这个对接口交给Spring容器管理 Map<userMapper,代理对象(JDK)>*/
 public interface UserMapper {
-
+    //如果需要返回值，则mybatis自动返回影响行数，xml不动
     void saveUser(User user);
 
     //指定接口的方法 查询demo_user的全部数据

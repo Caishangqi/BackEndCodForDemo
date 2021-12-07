@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace是mybatis映射文件的唯一标识,与接口对应
+    -->
+<mapper namespace="com.jt.mapper.DogMapper">
+    <!--返回属性
+    resultType:
+        (!) 只能支持字段名称余属性名称一致时才能
+        自动映射
+    resultMap:
+        (!) 支持任意结构
+    解决方式:
+        (!) 开启驼峰映射 map-underscore-to-camel-case: true-->
+    <select id="findAll" resultMap="dogRM">
+        select *
+        from demo_dog
+    </select>
+
+    <resultMap id="dogRM" type="Dog">
+        <!--ID代表主键-->
+        <id column="dog_id" property="dogID"/>
+        <!--结果集-->
+        <result column="dog_name" property="dogName"/>
+    </resultMap>
+
+
+</mapper>

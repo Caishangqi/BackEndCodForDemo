@@ -36,7 +36,7 @@ public class SpringAOP {
      * @return the object
      * @throws Throwable the throwable
      */
-//    @Around("execution(* com.jt.service..*.*(..))")
+    //@Around("execution(* com.jt.service..*.*(..))")
     @Around("@annotation(perm)") //只是拦截注解，获取注解的数据
     //如果有多个参数，JoinPoint必须写在第一位
     /**

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace是mybatis映射文件的唯一标识,与接口对应
+    -->
+<mapper namespace="com.jt.mapper.UserMapper2">
+    <!--动态SQL：根据对象中不为null的属性当作where条件
+    <if test="sex!=null">id = #{sex} </if>
+
+        where标签 去除where后边多余的and/or-->
+    <select id="findUserList" resultType="User">
+
+        select * from demo_user
+        <where> <!--where会把第一行多余的and去掉-->
+            <if test="id!=null">id = #{id}</if>
+            <if test="name!=null">and name = #{name}</if>
+            <if test="age!=null">and age = #{age}</if>
+            <if test="sex!=null">and sex = #{sex}</if>
+        </where>
+
+    </select>
+
+    <!--根据对象中不为null的元素，充当set条件-->
+    <update id="updateUser">
+        update demo_user
+        <set>
+            <if test="name!=null">name = #{name},</if>
+            <if test="age!=null">age = #{age},</if>
+            <if test="sex!=null">sex = #{sex}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <select id="findUserByNS" resultType="User">
+        select * from demo_user
+        <where>
+            <choose>
+                <when test="name!=null">
+                    name = #{name}
+                </when>
+                <when test="age!=null">
+                    age = #{age}
+                </when>
+                <otherwise>
+                    sex = #{sex}
+                </otherwise>
+            </choose>
+        </where>
+
+
+    </select>
+
+
+</mapper>

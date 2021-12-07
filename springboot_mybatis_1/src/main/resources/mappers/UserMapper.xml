@@ -7,6 +7,7 @@
 <mapper namespace="com.jt.mapper.UserMapper">
     <!--id 与接口方法对应
         resultType 返回值结果类型 返回的POJO对象类型
+        要把结果集封装成对象
     -->
     <select id="findAll" resultType="com.jt.pojo.User">
         select *

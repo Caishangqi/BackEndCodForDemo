@@ -100,6 +100,7 @@ public class TestMybatis {
     @Test
     public void testInsertUser() {
         User user = new User();
+        //如果需要返回值，则mybatis自动返回影响行数
         user.setName("张三").setAge(18).setSex("男");
         userMapper.saveUser(user);
         System.out.println("(+) Added User Completed");
