@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--namespace是mybatis映射文件的唯一标识,与接口对应
+    -->
+<mapper namespace="com.jt.mapper.EmpMapper">
+    <!--
+    如果操作的是单表 一般使用resultType
+    如果进行关联操作，使用resultMap
+    则如果是多表操作，不能有重名字段
+    如果需要关联封装 不添加 autoMapping = true 数据不会自动封装
+    (!) 涉及到关联封装 则必须使用autoMapping。-->
+    <select id="findAll" resultMap="empRM">
+        SELECT emp.id, emp.name, emp.age, emp.dept_id, dept.dept_name
+        FROM emp
+                 LEFT JOIN dept ON emp.dept_id = dept.dept_id
+    </select>
+
+    <!--自动映射规则：
+        (!) 没有关联映射时：如果属性和字段同名，可以省略不写
+        (!) 如果有关联映射：则需要添加字段映射的开关(该注解支队当前对象有效)-->
+    <resultMap id="empRM" type="Emp" autoMapping="true">
+        <!--主键是必填项-->
+        <id column="id" property="id"/>
+        <!--一对一关联封装
+            (!) 一对一关联封装用<association>标签
+            (!) 必须指定属性类型 javaType属性-->
+        <association property="dept" javaType="Dept" autoMapping="true">
+            <!--主键必填-->
+            <id column="dept_id" property="deptId"/>
+            <!--由于开启驼峰规则映射，所以省略以下操作-->
+            <!--<result column="dept_name" property="deptName"/>-->
+        </association>
+    </resultMap>
+</mapper>

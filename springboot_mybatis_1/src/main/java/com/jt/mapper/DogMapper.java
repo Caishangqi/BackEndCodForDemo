@@ -11,6 +11,6 @@ import java.util.List;
 /*把这个对接口交给Spring容器管理 Map<userMapper,代理对象(JDK)>*/
 public interface DogMapper {
 
-
     List<Dog> findAll();
+
 }

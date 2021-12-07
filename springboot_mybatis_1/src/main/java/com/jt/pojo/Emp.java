@@ -12,8 +12,11 @@ import java.io.Serializable;
 @Accessors(chain = true)
 @NoArgsConstructor //需要无参构造
 @AllArgsConstructor //需要全参构造
-public class Dog implements Serializable {
-    private Integer dogID;
-    private String dogName;
+public class Emp implements Serializable {
+
+    private Integer id;
     private Integer age;
+    private String name;
+    /*关联关系： 一个员工对应一个部门*/
+    private Dept dept;
 }
