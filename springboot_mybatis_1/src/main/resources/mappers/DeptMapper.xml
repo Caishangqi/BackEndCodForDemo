@@ -7,5 +7,21 @@
     -->
 <mapper namespace="com.jt.mapper.DeptMapper">
 
+    <select id="findAll" resultMap="deptRM">
+        select dept.dept_name, emp.*
+        from dept,
+             emp
+        where emp.dept_id = dept.dept_id
+    </select>
+
+    <resultMap id="deptRM" type="Dept" autoMapping="true">
+        <!--标识主键-->
+        <id column="dept_id" property="deptId"/>
+        <!--一对多封装 固定搭配 ofType-->
+        <collection property="emps" autoMapping="true" ofType="Emp">
+            <!--标识主键-->
+            <id column="id" property="id"/>
+        </collection>
+    </resultMap>
 
 </mapper>
