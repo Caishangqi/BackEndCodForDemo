@@ -3,9 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!--namespace是mybatis映射文件的唯一标识,与接口对应
+<!--
+    namespace是mybatis映射文件的唯一标识,与接口对应
     -->
 <mapper namespace="com.jt.mapper.UserAnnoMapper">
+
+    <!--让二级缓存在当前的Mapper层有效
+        (!) POJO必须序列化-->
+    <cache/>
+
     <select id="findCache1" resultType="User">
         select *
         from demo_user
