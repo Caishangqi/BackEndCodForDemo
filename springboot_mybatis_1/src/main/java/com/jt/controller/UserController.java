@@ -21,4 +21,9 @@ public class UserController {
     public List<User> findCache1() {
         return userService.findCache1();
     }
+
+    @GetMapping("/findAll")
+    public List<User> findAll() {
+        return userService.findAll();
+    }
 }

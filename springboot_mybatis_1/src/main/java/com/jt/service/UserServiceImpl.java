@@ -18,4 +18,9 @@ public class UserServiceImpl implements UserService {
         return userMapper.findCache1();
     }
 
+    @Override
+    public List<User> findAll() {
+        return userMapper.findAll();
+    }
+
 }

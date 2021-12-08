@@ -1,6 +1,7 @@
 package com.jt.mapper;
 
 import com.jt.pojo.User;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -10,6 +11,7 @@ import java.util.List;
     该Mapper主要测试注解开发
  */
 @Mapper
+@CacheNamespace //使用注解的二级缓存
 public interface UserAnnoMapper {
     //利用注解可以根据返回值类型。自动映射
     /*规则：

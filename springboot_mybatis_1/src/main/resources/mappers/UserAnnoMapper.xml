@@ -10,7 +10,7 @@
 
     <!--让二级缓存在当前的Mapper层有效
         (!) POJO必须序列化-->
-    <cache/>
+    <!--<cache/>-->
 
     <select id="findCache1" resultType="User">
         select *
