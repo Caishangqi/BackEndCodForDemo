@@ -1,0 +1,58 @@
+{
+  "id": "2362705",
+  "name": "JT项目图标",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "京淘项目中使用的图标",
+  "glyphs": [
+    {
+      "icon_id": "1135940",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "2836957",
+      "name": "权限",
+      "font_class": "quanxian",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "7722152",
+      "name": "订单",
+      "font_class": "icon--copy",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "9008792",
+      "name": "统计",
+      "font_class": "ziyuan",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "19609047",
+      "name": "商 品 ",
+      "font_class": "shangpin",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "2459201",
+      "name": "用户",
+      "font_class": "user",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "11746775",
+      "name": "锁",
+      "font_class": "suo",
+      "unicode": "e60c",
+      "unicode_decimal": 58892
+    }
+  ]
+}

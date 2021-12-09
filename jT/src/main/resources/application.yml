@@ -1,0 +1,29 @@
+#配置端口号
+server:
+  port: 8091
+
+#管理数据源
+spring:
+  datasource:
+    #高版本驱动使用
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/jt?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true
+    #设定用户名和密码
+    username: root
+    password: root
+
+#SpringBoot整合Mybatis
+mybatis:
+  #指定别名包
+  type-aliases-package: com.jt.pojo
+  #扫描指定路径下的映射文件
+  mapper-locations: classpath:/mappers/*.xml
+  #开启驼峰映射
+  configuration:
+    map-underscore-to-camel-case: true
+  # 一二级缓存默认开始 所以可以简化
+
+#打印mysql日志
+logging:
+  level:
+    com.jt.mapper: debug

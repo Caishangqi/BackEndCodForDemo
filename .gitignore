@@ -12,4 +12,6 @@ desktop.ini
 /.mvn/wrapper/
 /.mvn/
 */.mvn/**
-*.mvn/wrapper/maven-wrapper.jar
+*.mvn/wrapper/maven-wrapper.jar!/WebDemo/
+/jtadmin/
+/WebDemo/

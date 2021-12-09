@@ -1,0 +1,38 @@
+/* 定义全局样式表 */
+html,
+body,
+#app {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* 定义最小宽度 */
+    min-width: 1366px;
+}
+
+/* 定义卡片样式 */
+.el-card {
+    margin-top: 15px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 定义表格上边距*/
+.el-table {
+    margin-top: 15px;
+}
+
+/* 定义分页上边距*/
+.el-pagination {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* 定义富文本编辑器的宽度 */
+.ql-editor {
+    min-height: 350px;
+}
+
+video {
+    min-height: 200px;
+    min-width: 100%;
+}
