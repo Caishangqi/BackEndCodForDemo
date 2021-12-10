@@ -88,4 +88,44 @@ public class UserServiceImpl implements UserService {
         userMapper.deleteUserById(id);
     }
 
+    /**
+     * <h2>添加用户信息</h2>
+     * 添加默认值以及创建时间
+     *
+     * @param user 用户
+     * @throws NullPointerException 空
+     * @Description:
+     * @return: {@link Void}
+     * @author: Caizii
+     * @Date: 2021/12/9
+     * @deprecated 1997年
+     */
+    @Override
+    public void addUser(User user) {
+        String password = user.getPassword();
+        String md5Pass = DigestUtils.md5DigestAsHex(password.getBytes());
+        user.setPassword(md5Pass).setStatus(true).setUpdated(user.getCreated());
+        userMapper.addUser(user);
+    }
+
+
+    @Override
+    public User findUserById(Integer id) {
+        return userMapper.findUserById(id);
+    }
+
+    /**
+     * @param user 用户
+     * @throws NullPointerException
+     * @Description: <h2></h2>
+     * @return: {@link Void}
+     * @author: Caizii
+     * @Date: 2021/12/9
+     */
+    @Override
+    public void updateUser(User user) {
+        user.setUpdated(new Date());
+        userMapper.updateUser(user);
+    }
+
 }

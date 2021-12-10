@@ -28,4 +28,16 @@
         </where>
         limit #{start},#{size}
     </select>
+
+    <insert id="addUser">
+        insert into user value (null, #{username}, #{password}, #{phone}, #{email}, #{status}, #{created}, #{updated})
+    </insert>
+
+    <update id="updateUser">
+        update user
+        set phone   = #{phone},
+            email   = #{email},
+            updated = #{updated}
+        where id = #{id}
+    </update>
 </mapper>

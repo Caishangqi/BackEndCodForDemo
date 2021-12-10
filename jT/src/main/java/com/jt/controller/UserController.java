@@ -80,5 +80,42 @@ public class UserController {
         return SysResult.success();
     }
 
+    /**
+     * 新增用户
+     * url： /user/addUser
+     * 请求类型 POST
+     * 请求参数: 整个form表单数据封装为js对象进行参数传递
+     */
+    @PostMapping("/addUser")
+    public SysResult addUser(@RequestBody User user) {
+        userService.addUser(user);
+        return SysResult.success();
+    }
+
+    /**
+     * 根据ID查询用户信息
+     * 请求路径: /user/{id}
+     * 请求类型: GET
+     * 返回值: SysResult对象 data中要有User对象
+     */
+    @GetMapping("/{id}")
+    public SysResult findUserById(@PathVariable Integer id) {
+        User user = userService.findUserById(id);
+        return SysResult.success(user);
+    }
+
+    /**
+     * 根据用户ID更新数据
+     * 请求路径: /user/updateUser
+     * 请求类型: PUT
+     * 请求参数: User对象结构
+     * 返回值: SysResult对象 data: null
+     */
+    @PutMapping("/updateUser")
+    public SysResult updateUser(@RequestBody User user) {
+        userService.updateUser(user);
+        return SysResult.success();
+    }
+
 
 }

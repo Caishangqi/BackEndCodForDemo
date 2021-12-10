@@ -24,5 +24,10 @@ public interface UserMapper {
     @Delete("delete from user where id = #{id}")
     void deleteUserById(Integer id);
 
+    void addUser(User user);
 
+    @Select("select * from user where id = #{id}")
+    User findUserById(Integer id);
+
+    void updateUser(User user);
 }
