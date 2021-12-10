@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jt.mapper.RightsMapper">
+    <select id="getRightsList" resultMap="rightsRM">
+        SELECT *
+        FROM (SELECT * FROM rights WHERE parent_id = 0) p
+                 LEFT JOIN
+             (SELECT id        c_id,
+                     NAME      c_name,
+                     parent_id c_parent_id,
+                     path      c_path,
+                     LEVEL     c_level,
+                     created   c_created,
+                     updated   c_updated
+              FROM rights) c
+             ON p.id = c.c_parent_id
+    </select>
+
+    <resultMap id="rightsRM" type="Rights" autoMapping="true">
+        <id column="id" property="id"/>
+        <!--一对多collection-->
+        <collection property="children" ofType="Rights" autoMapping="true">
+            <id column="c_id" property="id"/>
+            <id column="c_name" property="name"/>
+            <id column="c_parent_id" property="parentId"/>
+            <id column="c_path" property="path"/>
+            <id column="c_level" property="level"/>
+            <id column="c_created" property="created"/>
+            <id column="c_updated" property="updated"/>
+        </collection>
+    </resultMap>
+</mapper>

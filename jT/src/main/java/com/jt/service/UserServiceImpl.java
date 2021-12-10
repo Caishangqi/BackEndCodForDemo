@@ -2,10 +2,12 @@ package com.jt.service;
 
 import com.jt.mapper.UserMapper;
 import com.jt.pojo.User;
+import com.jt.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -48,6 +50,42 @@ public class UserServiceImpl implements UserService {
         //生成UUID
         String token = UUID.randomUUID().toString();
         return token;
+    }
+
+    /**
+     * 分页查询Sql：
+     * SELECT * FROM USER LIMIT 起始位置，查询条数
+     * 第一页：每页10条
+     * SELECT * FROM USER LIMIT 0, 10 (0-9)
+     * 第二页：每页10条
+     * SELECT * FROM USER LIMIT 10, 10 (10 - 19)
+     * 第N页：
+     * SELECT * FROM USER LIMIT (n-1)*10 , 10
+     *
+     * @param pageResult
+     * @return
+     */
+    @Override
+    public PageResult findUserList(PageResult pageResult) {
+        //总记录数 (从数据库找)
+        long total = userMapper.findTotal();
+        //获取分页查询的结果
+        int start = (pageResult.getPageNum() - 1) * pageResult.getPageSize();
+        int size = pageResult.getPageSize();
+        String query = pageResult.getQuery();
+        List<User> rows = userMapper.findUserList(start, size, query);
+        return pageResult.setTotal(total).setRows(rows);
+    }
+
+    @Override
+    public void updateStatus(User user) {
+        user.setUpdated(new Date()); //设定当前时间
+        userMapper.updateStatus(user);
+    }
+
+    @Override
+    public void deleteUserById(Integer id) {
+        userMapper.deleteUserById(id);
     }
 
 }

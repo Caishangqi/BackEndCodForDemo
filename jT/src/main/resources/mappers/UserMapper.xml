@@ -16,4 +16,16 @@
         where username = #{username}
           and password = #{password}
     </select>
+
+    <!--表面必须小写 ctrl shift u
+        (!) Query 属性可能有值，可能没值-->
+    <select id="findUserList" resultType="User">
+        select * from user
+        <where>
+            <if test="query !=null and query !=''">
+                username like "%"#{query}"%"
+            </if>
+        </where>
+        limit #{start},#{size}
+    </select>
 </mapper>

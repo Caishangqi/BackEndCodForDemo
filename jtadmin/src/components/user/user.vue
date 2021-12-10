@@ -288,7 +288,7 @@
 
          //如果确认  confirm  如果取消 cancel
          if(result !== 'confirm'){
-            this.$message.info("删除取消")
+            return this.$message.info("删除取消")
          }
          const {data: result2} = await this.$http.delete(`/user/${user.id}`)
          if(result2.status !== 200) return this.$message.error("删除失败")
