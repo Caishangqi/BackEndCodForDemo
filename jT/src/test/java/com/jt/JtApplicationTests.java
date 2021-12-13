@@ -1,11 +1,13 @@
 package com.jt;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.jt.mapper.UserMapper;
 import com.jt.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -126,8 +128,73 @@ class JtApplicationTests {
         List<Integer> userList = Arrays.asList(ids); //数组转List集合
         List<User> users1 = userMapper.selectBatchIds(userList);//要的集合类型
         System.out.println(users1);
+    }
 
+    /**
+     * 动态查询数据
+     * 使用电话/邮箱查询
+     */
 
+    @Test
+    public void test06() {
+
+        String tel = "13910783530";
+        String email = "11@qq.com";
+
+        QueryWrapper<User> userQueryWrapper = new QueryWrapper<>();
+        userQueryWrapper.eq(StringUtils.hasLength(tel), "phone", tel)
+                .eq(StringUtils.hasLength(email), "email", email);
+        List<User> users = userMapper.selectList(userQueryWrapper);
+        System.out.println(users);
+
+    }
+
+    /**
+     * 只查询主键信息
+     * API：selectObjs
+     * 用途：
+     * 进行关联查询
+     */
+    @Test
+    public void test07() {
+        //用来获取主键的信息
+        List<Object> objects = userMapper.selectObjs(null);
+        System.out.println(objects);
+        // [1, 2, 4, 8, 9, 10, 11, 12]
+//        List<User> userList = userMapper.selectList(null);
+//        System.out.println(userList);
+    }
+
+    /**
+     * 用户修改操作
+     * (!) 根据id修改数据
+     * 讲id=22 改为admin777，phone = 11111111111
+     * id当作唯一的where条件其他不为空的属性当作set的
+     * 条件。
+     */
+    @Test
+    public void test08() {
+
+        // UPDATE User SET username=?, phone=? WHERE id=?
+        User user = new User();
+        user.setId(22).setUsername("admin777").setPhone("11111111111");
+        userMapper.updateById(user);
+        System.out.println("(!) Done");
+
+    }
+
+    /**
+     * 用户修改操作
+     * 讲password=123456的phone改为10086 email=10086@qq.com
+     * 参数(!) entity：主要的目的封装set条件
+     */
+    @Test
+    public void test09() {
+        User user = new User();
+        user.setPhone("10086").setEmail("10086@qq.com");
+        UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
+        userUpdateWrapper.eq("password", "123456");
+        userMapper.update(user, userUpdateWrapper);
     }
 
 }
