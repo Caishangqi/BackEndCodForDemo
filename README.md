@@ -2,7 +2,13 @@
 
 ![Spring](https://spring.io/images/spring-logo-9146a4d3298760c2e7e49595184e1975.svg)
 
-[![CodeFactor](https://www.codefactor.io/repository/github/caishangqi/backendcodfordemo/badge)](https://www.codefactor.io/repository/github/caishangqi/backendcodfordemo)
+<p align="center">
+<img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/Caishangqi/backendcodfordemo">
+<img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/Caishangqi/backendcodfordemo">
+<img alt="Lines of code" src="https://img.shields.io/badge/Spring-MVC-green">
+<img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/w/caishangqi/backendcodfordemo">
+<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/Caishangqi/backendcodfordemo">
+</p>
 
 ### What does the project do?
 
