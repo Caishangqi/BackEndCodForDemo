@@ -5,6 +5,7 @@ import com.jt.pojo.User;
 import com.jt.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.util.Date;
@@ -33,6 +34,7 @@ public class UserServiceImpl implements UserService {
      * @return String
      */
     @Override
+    @Transactional
     public String login(User user) {
         String password = user.getPassword();
         byte[] bytes = password.getBytes();
@@ -79,11 +81,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateStatus(User user) {
+
         user.setUpdated(new Date()); //设定当前时间
         userMapper.updateStatus(user);
     }
 
     @Override
+    @Transactional
     public void deleteUserById(Integer id) {
         userMapper.deleteUserById(id);
     }
@@ -101,6 +105,7 @@ public class UserServiceImpl implements UserService {
      * @deprecated 1997年
      */
     @Override
+    @Transactional
     public void addUser(User user) {
         String password = user.getPassword();
         String md5Pass = DigestUtils.md5DigestAsHex(password.getBytes());
@@ -123,6 +128,7 @@ public class UserServiceImpl implements UserService {
      * @Date: 2021/12/9
      */
     @Override
+    @Transactional
     public void updateUser(User user) {
         user.setUpdated(new Date());
         userMapper.updateUser(user);

@@ -62,6 +62,7 @@ public class UserController {
     @PutMapping("/status/{id}/{status}")
     public SysResult updateStatus(User user) {
         //@PathVariable Integer id, @PathVariable Boolean status
+        //==> 在这里要插入AOP方法拓展 报错 (全局异常处理机制的实现)
         userService.updateStatus(user);
         return SysResult.success();
     }
@@ -74,7 +75,7 @@ public class UserController {
      * 返回值：null
      */
     @DeleteMapping("/{id}")
-    public SysResult deleteUserById(@PathVariable Integer id) {
+    public SysResult deleteUserById(@PathVariable("id") Integer id) {
         //deleteUserById(User user){
         userService.deleteUserById(id);
         return SysResult.success();

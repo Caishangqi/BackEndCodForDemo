@@ -1,12 +1,20 @@
 package com.jt.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jt.pojo.User;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
-public interface UserMapper {
+/**
+ * 继承时，必须添加泛型。该泛型必须与
+ * 表进行关联。
+ *
+ * MP提供了强大的单表CRUD操作，多表
+ * 操作自己写
+ */
+public interface UserMapper extends BaseMapper<User> { //别忘了加泛型
 
     List<User> findAll();
 
