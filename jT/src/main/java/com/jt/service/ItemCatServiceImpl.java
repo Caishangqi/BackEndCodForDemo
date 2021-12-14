@@ -1,9 +1,11 @@
 package com.jt.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.jt.mapper.ItemCatMapper;
 import com.jt.pojo.ItemCat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +23,7 @@ public class ItemCatServiceImpl implements ItemCatService {
      * (!) 如果key不存在，准备一个新的list集合，讲自己作为第一个元素添加
      * (!) 如果key存在，获取list集合，把自己追加进去
      *
-     * @return
+     * @return {@link Map<Integer,List<ItemCat>>}
      */
     public Map<Integer, List<ItemCat>> getMap() {
         Map<Integer, List<ItemCat>> map = new HashMap<>();
@@ -109,6 +111,66 @@ public class ItemCatServiceImpl implements ItemCatService {
         //获取1-3级数据
         return getThreeList(map);
 
+    }
+
+    /**
+     * 有些数据应该提前填充
+     *
+     * @param itemCat
+     */
+    @Override
+    @Transactional //事务注解
+    public void saveItemCat(ItemCat itemCat) {
+        itemCat.setStatus(true);
+//                .setCreated(new Date())
+//                .setUpdated(itemCat.getCreated());
+
+        itemCatMapper.insert(itemCat);
+    }
+
+    /**
+     * 判断是否为3级 如果是，则直接删除
+     * 判断是否为2级 先删除3级再删除2级
+     * 如果是1级，先查询二级再删除三级/二级/一级
+     *
+     * @param itemCat
+     */
+    @Override
+    @Transactional
+    public void deleteItemCat(ItemCat itemCat) {
+        if (itemCat.getLevel() == 3) {
+            itemCatMapper.deleteById(itemCat.getId());
+        }
+        if (itemCat.getLevel() == 2) {
+            int twoId = itemCat.getId();
+            QueryWrapper<ItemCat> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("parent_id", twoId);
+            //删除的是三级数据
+            itemCatMapper.delete(queryWrapper);
+            //再删除自己
+            itemCatMapper.deleteById(twoId);
+        }
+
+        //只剩下一级菜单
+        // 应该先查询二级id
+        int oneId = itemCat.getId();
+        QueryWrapper<ItemCat> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("parent_id", oneId);
+        List<Object> twoIdList = itemCatMapper.selectObjs(queryWrapper);
+
+        if (twoIdList.size() == 0) {
+            //如果没有二级数据，则直接删除一级信息
+            itemCatMapper.deleteById(oneId);
+        } else {
+            //有二级，可以删除三级
+            queryWrapper.clear();
+            queryWrapper.in("parent_id", twoIdList)
+                    .or()
+                    .in("id", twoIdList)
+                    .or()
+                    .eq("id", oneId);
+            itemCatMapper.delete(queryWrapper);
+        }
     }
 
     private List<ItemCat> getThreeList(Map<Integer, List<ItemCat>> map) {

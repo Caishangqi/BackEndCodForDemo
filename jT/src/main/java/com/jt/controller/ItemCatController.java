@@ -27,4 +27,30 @@ public class ItemCatController {
         List<ItemCat> catList = itemCatService.findItemCatList(level);
         return SysResult.success(catList);
     }
+
+    /**
+     * 实现商品分类新增操作
+     * 请求路径: /itemCat/saveItemCat
+     * 请求类型: post
+     * 请求参数: JSON串
+     * 返回值：SysResult对象
+     */
+    @PostMapping("/saveItemCat")
+    public SysResult saveItemCat(@RequestBody ItemCat itemCat) {
+        itemCatService.saveItemCat(itemCat);
+        return SysResult.success();
+    }
+
+    /**
+     * 商品分类删除
+     * 请求路径: /itemCat/deleteItemCat
+     * 请求类型: delete
+     * 参数： ID /Level
+     * 返回值：SysResult
+     */
+    @DeleteMapping("/deleteItemCat")
+    public SysResult deleteItemCat(ItemCat itemCat) {
+        itemCatService.deleteItemCat(itemCat);
+        return SysResult.success();
+    }
 }
