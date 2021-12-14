@@ -5,6 +5,7 @@ import ElementUI from '../components/ElementUI.vue'
 // 别忘了导入Home组件
 import Home from '../components/Home.vue'
 import User from '../components/user/user.vue'
+import ItemCat from '../components/items/ItemCat.vue'
 //使用路由机制
 Vue.use(VueRouter)
 const routes = [
@@ -13,7 +14,8 @@ const routes = [
   {path: '/elementUI', component: ElementUI},
   {
     path: '/home', component: Home, children: [
-      {path: '/user', component: User}]
+      {path: '/user', component: User},
+      {path: '/itemCat', component: ItemCat}]
   }
 
 ]
