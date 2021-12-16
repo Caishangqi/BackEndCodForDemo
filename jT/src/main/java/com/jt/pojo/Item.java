@@ -1,5 +1,8 @@
 package com.jt.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -9,7 +12,9 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
+@TableName("item")
 public class Item extends BasePojo {
+    @TableId(type = IdType.AUTO) //主键自增
     private Integer id;         //商品Id号
     private String title;       //商品标题信息
     private String sellPoint;   //卖点信息
